@@ -27,12 +27,6 @@ app.use((req, res, next) => {
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
-  res.render('home.hbs', {
-    pageTitle: 'Home Page',
-    welcomeMessage: 'Welcome to my Website!'
-  })
-});
 
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
@@ -42,9 +36,22 @@ hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
 });
 
+app.get('/', (req, res) => {
+  res.render('home.hbs', {
+    pageTitle: 'Home Page',
+    welcomeMessage: 'Welcome to my Website!'
+  })
+});
+
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About page'
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Portfolio page'
   });
 });
 
